@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 40px;
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="email"], input[type="number"], input[type="date"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        h1 {
+            color: #555;
+        }
+        .hidden {
+            display: none;
+        }
+        #totalDisplay {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="/connect.php" method="post">
+        <h1>Order Details</h1>
+        Name: <input type="text" name="name"><br>
+        Phone: <input type="number" name="phone"><br>
+        Email: <input type="email" name="email"><br>
+        Address: <input type="text" name="address"><br>
+        City: <input type="text" name="city"><br>
+        State: <input type="text" name="state"><br>
+        Country: <input type="text" name="country"><br>
+        <h1>Payment Method</h1>
+        <div id="totalDisplay"></div>
+        <select name="paymentMethod" id="paymentMethod" onchange="toggleCardInfo()">
+            <option value="cash">Cash</option>
+            <option value="card">Card</option>
+        </select>
+        <div id="cardInfo" class="hidden">
+            <h1>Card Details</h1>
+            Credit Card: <input type="number" name="credit"><br>
+            Expiration Date: <input type="date" name="date"><br>
+            CVV: <input type="number" name="cvv"><br>
+            Card Holder Name: <input type="text" name="cardName"><br>
+        </div>
+        <input type="submit" value="Place Order">
+    </form>
+
+    
+
+    <script>
+        window.onload = function() {
+            // Extract the subtotal from URL query parameters
+            var params = new URLSearchParams(window.location.search);
+            var subtotal = parseInt(params.get('subtotal'), 10); // Get 'subtotal' parameter
+
+            if (subtotal) {
+                // Calculate the total with shipping
+                var shipping = 459;
+                var totalAmount = subtotal + shipping;
+
+                // Display the calculated total
+                var displayText = "Shipping: Rs. " + shipping + "<br>Total (including shipping): Rs. " + totalAmount;
+                document.getElementById('totalDisplay').innerHTML = displayText;
+            }
+        };
+
+        function toggleCardInfo() {
+            var paymentMethod = document.getElementById('paymentMethod').value;
+            var cardInfo = document.getElementById('cardInfo');
+            cardInfo.style.display = paymentMethod === 'card' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
+
+
