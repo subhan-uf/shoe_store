@@ -30,7 +30,10 @@
 Shoe Store redefines online shopping by bridging the gap between physical and digital retail. Customers no longer need to visit stores physically—every detail can be visualized, explored, and experienced virtually, enabling smarter, faster, and more confident purchase decisions.
 
 ---
+Click on the image below to watch a working demo:
+
 [![Watch Demo](https://img.youtube.com/vi/8RC-pKsCwGI/hqdefault.jpg)](https://www.youtube.com/watch?v=8RC-pKsCwGI)
+
 
 ## License
 
