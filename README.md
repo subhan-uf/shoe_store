@@ -37,7 +37,7 @@ Click on the image below to watch a working demo:
 
 ## License
 
-Distributed under the MIT License.
+Distributed under the MIT License
 
 ---
 
